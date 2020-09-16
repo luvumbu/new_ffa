@@ -59,20 +59,109 @@ var club_departement = tr[3].children[12].innerText;// club_departement//
 
 var totaluser = nomEpreuve.length; // nombre total de user
 console.log(nomEpreuve.length);
+test= 50;
+// totaluser =test;
 
 for(var i=3;i<totaluser-1;i++){ 
+ var nombre_space = 0 ;
+ var nombre_space_quantite = 0 ; 
+ var users_nationality = "" ;
+ var users_nom    = "";
+ var users_prenom = ""; 
+ var premier_lettre =0;
  
-	var ok = new Information("php.php"); // création de la classe 
-	ok.add("club_nom",  tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
-	ok.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
-	ok.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
 
-	ok.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
+ var users_nationality_verif =false;
+ var users_nom_verif   = false;
+ var users_nom_verif   = false;
+
+ 
+
+ 
+// boucle Nom comple
+var nomcomplet= tr[i].children[6].innerText; 
+for(var j = 0; j<nomcomplet.length;j++ ){
+	if(nomcomplet[j]==" "){
+		nombre_space ++ ;
+	}
+	if(nomcomplet[j]=="("){
+		nombre_space ++ ;
+		users_nationality_verif=true; 
+	}
+}
+
+if(users_nationality_verif==false){ // luser est français 
+ 
+	users_nationality="FR";
+for(var x = 0 ; x<nomcomplet.length;x++){
+ 
+	if(nomcomplet[x]==" "){
+		nombre_space_quantite++; 
+	}
+	if(nombre_space_quantite<nombre_space){
+	users_nom  = users_nom +nomcomplet[x] ;
+	}
+	else {		
+		users_prenom  = users_prenom +nomcomplet[x] ;
+	}
+}
 
 
+ 
+}
+else { // luser est etranger
+	for(var x = 0 ; x<nomcomplet.length;x++){
+		//console.log(nomcomplet[x]);
+		if(nomcomplet[x]==" "){
+			nombre_space_quantite++; 
+		}
+		if(nombre_space_quantite<nombre_space-2){
+		users_nom  = users_nom +nomcomplet[x] ;
+		}
+		else {
+			
+			if(nomcomplet[x]!=" " && nomcomplet[x]!="(" && users_nationality_verif==true ){
+				users_prenom  = users_prenom +nomcomplet[x] ;
+			}
+			if(nomcomplet[x]=="("){
+				users_nationality_verif =false;
+			}
+			if(users_nationality_verif==false && nomcomplet[x]!="(" && nomcomplet[x]!=")"){
+				users_nationality = users_nationality+nomcomplet[x];
+			}
+		}
+	}
 	
-	console.log(ok.info()); // demande l'information dans le tableau
-	ok.push(); // envoie l'information au code pkp 
+}
+ 
+ 
+console.log(users_nationality);
+console.log(users_nom);
+console.log(users_prenom);
+// fin boucle nom comple 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+	 //Preparation avant d el'envoie ok 	 
+	// var ok = new Information("php.php"); // création de la classe 
+	// ok.add("club_nom",  tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
+	// ok.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
+	// ok.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
+	// ok.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
+	// console.log(ok.info()); // demande l'information dans le tableau
+	// ok.push(); // envoie l'information au code pkp 
+
+	// envoie de donne ok 
 }
 
  //console.log(total); 
