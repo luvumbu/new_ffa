@@ -69,6 +69,19 @@ for(var i=3;i<totaluser-1;i++){
  var users_nom    = "";
  var users_prenom = ""; 
  var premier_lettre =0;
+
+ var totalx= tr[i].children[2].innerText.length; //analyse la perf
+var total_s= tr[i].children[2].innerText; // taille de la perf 
+var res = total_s.replace("''", "."); // remplacement "" par . 
+var reccord="";
+var result_perf="";
+var result_perf2="";
+var result_perf3="";
+
+var reccord_verif=false;
+var result_perf_verif=false;
+var result_perf2_verif=false;
+var result_perf3_verif=false;
  
 
  var users_nationality_verif =false;
@@ -98,11 +111,17 @@ for(var x = 0 ; x<nomcomplet.length;x++){
 	if(nomcomplet[x]==" "){
 		nombre_space_quantite++; 
 	}
+
 	if(nombre_space_quantite<nombre_space){
 	users_nom  = users_nom +nomcomplet[x] ;
+	
 	}
 	else {		
-		users_prenom  = users_prenom +nomcomplet[x] ;
+		if(nomcomplet[x]!=" "){
+			users_prenom  = users_prenom +nomcomplet[x] ;
+
+		}
+		
 	}
 }
 
@@ -120,7 +139,7 @@ else { // luser est etranger
 		}
 		else {
 			
-			if(nomcomplet[x]!=" " && nomcomplet[x]!="(" && users_nationality_verif==true ){
+			if(nomcomplet[x]!="" &&nomcomplet[x]!=" " && nomcomplet[x]!="(" && users_nationality_verif==true ){
 				users_prenom  = users_prenom +nomcomplet[x] ;
 			}
 			if(nomcomplet[x]=="("){
@@ -130,9 +149,39 @@ else { // luser est etranger
 				users_nationality = users_nationality+nomcomplet[x];
 			}
 		}
+	}	
+}
+
+
+//console.log(tr[3].children[2].innerText.length+"!?");
+
+// /!\ epreuve 400mheais possible et sprint
+for(var t = 0 ;t<totalx-1;t++){
+	if(res[t]=="R"){
+		reccord = "RP";
 	}
+
+
+	if(res[t]==" "){
+		reccord_verif=true;
+	}
+
+	if(reccord_verif==false){
+		result_perf = result_perf+res[t];
+	}
+	else {
+
+	}
+
 	
 }
+
+console.log(result_perf);
+console.log(reccord);
+// /!\ epreuve 400mheais possible et sprint
+// for(var u = 0 ; u< ; u++){
+	
+// }
  
  
 console.log(users_nationality);
