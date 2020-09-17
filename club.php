@@ -6,9 +6,28 @@ $servername = "localhost";
 $username = "root";
 $password = $username;
 $dbname = "all_ffa";
+
+
 $club_nom= $_POST["club_nom"];
 $club_region= $_POST["club_region"];
 $club_departement= $_POST["club_departement"];
+
+
+$club_id="";
+
+$search  = array("&","'","-","-","à","À","á","Á","â","Â","ã","Ã","ä","Ä","å","Å","æ","Æ","è","È","é","É","ê","Ê","ë","Ë","ì","Ì","í","Í","î","Î","ï","Ï","ò","Ò","ó","Ó","ô","Ô","õ","Õ","ö","Ö","ø","Ø","ù","Ù","ú","Ú","û","Û","ü","Ü","ñ","Ñ","ý","Ý");
+$replace = array('&amp',"&#039","&mdash","&ndash","&agrave","&Agrave","&aacute","&Aacute","&acirc","&Acirc","&atilde","&Atilde","&auml","&Auml","&aring","&Aring","&aelig","&AElig","&egrave","&Egrave","&eacute","&Eacute","&ecirc","&Ecirc","&euml","&Euml","&igrave","&Igrave","&iacute","&Iacute","&icirc","&Icirc","&iuml","&Iuml","&ograve","&Ograve","&oacute","&Oacute","&ocirc","&Ocirc","&otilde","&Otilde","&ouml","&Ouml","&oslash","&Oslash","&ugrave","&Ugrave","&uacute","&Uacute","&ucirc","&Ucirc","&uuml","&Uuml","&ntilde","&Ntilde","&yacute","&Yacute");
+
+$club_nom= str_replace($search, $replace, $club_nom);
+
+
+
+
+
+
+
+
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,53 +36,55 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = 'SELECT * FROM `club` WHERE `club_nom`="'.$club_nom.'"';
+$sql ='SELECT * FROM `club` WHERE `club_nom`="'.$club_nom.'"';
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    $club_id= $row["club_id"];
+		$club_id= $row["club_id"];
   }
 } else {
 
+
+// isertion des donnne si elle nexiste pas dans la BDD  #1 
+
 // Create connection
-$conn_insert = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
-if ($conn_insert->connect_error) {
-  die("Connection failed: " . $conn_insert->connect_error);
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
 
-$sql_insert = "INSERT INTO club (club_nom, club_region,club_departement)
-VALUES ('$club_nom', '$club_region', '$club_departement')";
-if ($conn_insert->query($sql_insert) === TRUE) { 
- 
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
-	$sql = 'SELECT * FROM `club` WHERE `club_nom`="'.$club_nom.'"';
-	$result = $conn->query($sql);
-	
-	if ($result->num_rows > 0) {
-		// output data of each row
-		while($row = $result->fetch_assoc()) {
-	   	$club_id= $row["club_id"];		 
-		}
-	} else {
-		echo "0 results";
-	}
+$sql = "INSERT INTO club (club_nom)
+VALUES ('$club_nom')";
 
-echo "test error";
-// fin select 
+if ($conn->query($sql) === TRUE) {
 
+	
+  echo "New record created successfully";
 } else {
-  echo "Error: " . $sql_insert . "<br>" . $conn_insert->error;
+  echo "Error: " . $sql . "<br>" . $conn->error;
 }
-$conn_insert->close();
+
+ 
+
+// fin de linsertio, des donne dans la bdd  #1 
+
+
+
 }
 $conn->close();
-// ici je vais recuperer le id du club qui est la variable $club_id
-//$club_id 
-$_SESSION["club_id"] = $club_id;
+
+
+
+
+
+
+
+ 
+
+
+
+ 
 ?>

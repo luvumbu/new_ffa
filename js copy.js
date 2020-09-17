@@ -258,23 +258,23 @@ var club = new Information("club.php"); // création de la classe
 club.add("club_nom", tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
 club.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
 club.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
-//club.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
+club.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
 //club.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
-console.log(club.info()); // demande l'information dans le tableau
+//console.log(club.info()); // demande l'information dans le tableau
 club.push(); // envoie l'information au code pkp
 
 
 
 
 
-// var epreuve = new Information("epreuve.php"); // création de la classe 
-// epreuve.add("epreuvecomplet",epreuvecomplet); // ajout de l'information pour lenvoi 
-// //epreuve.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
-// //epreuve.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
-// //epreuve.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
-// //epreuve.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
-// console.log(epreuve.info()); // demande l'information dans le tableau
-// epreuve.push(); // envoie l'information au code pkp
+var epreuve = new Information("epreuve.php"); // création de la classe 
+epreuve.add("epreuvecomplet",epreuvecomplet); // ajout de l'information pour lenvoi 
+//epreuve.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
+//epreuve.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
+//epreuve.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
+//epreuve.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
+console.log(epreuve.info()); // demande l'information dans le tableau
+epreuve.push(); // envoie l'information au code pkp
 
 
 
