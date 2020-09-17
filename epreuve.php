@@ -69,4 +69,7 @@ $conn->close();
 // ici je vais recuperer le id du club qui est la variable $club_id
 //$club_id 
 // echo $id_epreuve;
+
+
+include("user.php"); 
 ?>

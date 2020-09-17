@@ -223,12 +223,24 @@ club.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxi
 
 
 // debut deuxieme partie envoie 
-
 club.add("nom_epreuve", tr[2].innerText);
 club.add("filtre_nom_epreuve", epreuve_filtre);
 club.add("sex_epreuve", user_sex);
-
 // fin de la deuximeme partie envoi 
+
+
+
+// debut troisieme condition 
+club.add("users_nom_complet", tr[i].children[6].innerText);
+club.add("users_nom", users_nom);
+club.add("users_prenom", users_prenom);
+club.add("users_sex", user_sex);
+club.add("users_naissance", tr[i].children[16].innerText);
+club.add("users_nationality", users_nationality);
+
+
+
+// fin troisiéme condition 
 
 
 console.log(club.info()); // demande l'information dans le tableau
@@ -276,15 +288,7 @@ club.push(); // envoie l'information au code pkp
 // envoie pour le club 
 
 //Preparation avant d el'envoie ok 	 
-var club = new Information("club.php"); // création de la classe 
-club.add("club_nom", tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
-club.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
-club.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
-club.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
-club.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
-console.log(club.info()); // demande l'information dans le tableau
-club.push(); // envoie l'information au code pkp
-
+ 
 
 
 

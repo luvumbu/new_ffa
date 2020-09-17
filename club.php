@@ -83,7 +83,7 @@ if ($result->num_rows > 0) {
    $club_id= $row["club_id"];
   }
 } else {
-  echo "0 results";
+ 
 }
 
 
