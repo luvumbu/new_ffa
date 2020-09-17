@@ -58,8 +58,9 @@ var club_departement = tr[3].children[12].innerText; // club_departement//
 
 var totaluser = nomEpreuve.length; // nombre total de user
 
-test = 5;
-totaluser = test;
+// partie test on
+// test = 50;
+// totaluser = test;
 
 for (var i = 3; i < totaluser - 1; i++) {
 	var nombre_space = 0;
@@ -186,10 +187,6 @@ for (var i = 3; i < totaluser - 1; i++) {
 	console.log("--__--__-__-_-_-_-");
 
 
-
-
-
-
 	for (var f = 0; f < epreuve_nom.length; f++) {
 		if (epreuve_nom[f] == "|") {
 			epreuve_nom_verif = true;
@@ -211,6 +208,31 @@ for (var i = 3; i < totaluser - 1; i++) {
 			epreuve_filtre = epreuve_filtre + epreuvecomplet[g];
 		}
 	}
+
+
+var club = new Information("club.php"); // création de la classe 
+
+// Premier partie envoie
+club.add("club_nom", tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
+club.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
+club.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
+club.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
+club.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
+// fin de la premier partie de lenvoie
+
+
+
+// debut deuxieme partie envoie 
+
+club.add("nom_epreuve", tr[2].innerText);
+club.add("filtre_nom_epreuve", epreuve_filtre);
+club.add("sex_epreuve", user_sex);
+
+// fin de la deuximeme partie envoi 
+
+
+console.log(club.info()); // demande l'information dans le tableau
+club.push(); // envoie l'information au code pkp
 }
 
 
@@ -258,8 +280,8 @@ var club = new Information("club.php"); // création de la classe
 club.add("club_nom", tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
 club.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
 club.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
-//club.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
-//club.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
+club.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
+club.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
 console.log(club.info()); // demande l'information dans le tableau
 club.push(); // envoie l'information au code pkp
 

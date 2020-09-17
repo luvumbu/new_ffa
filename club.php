@@ -56,8 +56,8 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO club (club_nom)
-VALUES ('$club_nom')";
+$sql = "INSERT INTO club (club_nom,club_region,club_departement)
+VALUES ('$club_nom','$club_region','$club_departement')";
 
 if ($conn->query($sql) === TRUE) {
 
@@ -95,5 +95,8 @@ if ($result->num_rows > 0) {
 // fin de linsertio, des donne dans la bdd  #1 
 }
 $conn->close();
-echo $club_id ; 
+include("epreuve.php");
+
+
+
 ?>
