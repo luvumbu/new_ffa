@@ -62,29 +62,38 @@ VALUES ('$club_nom')";
 if ($conn->query($sql) === TRUE) {
 
 	
-  echo "New record created successfully";
+	echo "New record created successfully";
+	
+	// debut de la condition #1  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// Create connection
+ // Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = 'SELECT * FROM `club` WHERE `club_nom` ="'.$club_nom.'"';
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+   $club_id= $row["club_id"];
+  }
+} else {
+  echo "0 results";
+}
+
+
+
+	// fin de la condition  #1    !!!!!!!!!!!!!!!!!!!!
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
- 
-
 // fin de linsertio, des donne dans la bdd  #1 
-
-
-
 }
 $conn->close();
-
-
-
-
-
-
-
- 
-
-
-
- 
+echo $club_id ; 
 ?>
