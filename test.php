@@ -31,6 +31,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   while($row = $result->fetch_assoc()) {
     echo "nom: " . $row["club_nom"];
+    echo "<br/>";
   }
 } else {
   echo "0 results";
