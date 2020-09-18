@@ -8,9 +8,20 @@ $password = $username;
 $dbname = "all_ffa";
 
 
+
+// $servername = "localhost";
+// $username = "u481158665_all_ffa3";
+// $password = "v3p9r3e@59A";
+// $dbname = "u481158665_all_ffa3";
+
 $club_nom= $_POST["club_nom"];
 $club_region= $_POST["club_region"];
 $club_departement= $_POST["club_departement"];
+
+
+
+
+
 
 
 $club_id="";

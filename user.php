@@ -8,12 +8,10 @@ $users_naissance =          $_POST["users_naissance"];
 $users_nationality =        $_POST["users_nationality"];
 
 
-$users_naissance2 = $users_naissance;
 
 
-
-
-
+ 
+ 
 
 $search  = array("&", "'", "à", "À", "á", "Á", "â", "Â", "ã", "Ã", "ä", "Ä", "å", "Å", "æ", "Æ", "è", "È", "é", "É", "ê", "Ê", "ë", "Ë", "ì", "Ì", "í", "Í", "î", "Î", "ï", "Ï", "ò", "Ò", "ó", "Ó", "ô", "Ô", "õ", "Õ", "ö", "Ö", "ø", "Ø", "ù", "Ù", "ú", "Ú", "û", "Û", "ü", "Ü", "ñ", "Ñ", "ý", "Ý");
 $replace = array('&amp', "&#039", "&agrave", "&Agrave", "&aacute", "&Aacute", "&acirc", "&Acirc", "&atilde", "&Atilde", "&auml", "&Auml", "&aring", "&Aring", "&aelig", "&AElig", "&egrave", "&Egrave", "&eacute", "&Eacute", "&ecirc", "&Ecirc", "&euml", "&Euml", "&igrave", "&Igrave", "&iacute", "&Iacute", "&icirc", "&Icirc", "&iuml", "&Iuml", "&ograve", "&Ograve", "&oacute", "&Oacute", "&ocirc", "&Ocirc", "&otilde", "&Otilde", "&ouml", "&Ouml", "&oslash", "&Oslash", "&ugrave", "&Ugrave", "&uacute", "&Uacute", "&ucirc", "&Ucirc", "&uuml", "&Uuml", "&ntilde", "&Ntilde", "&yacute", "&Yacute");
@@ -141,4 +139,29 @@ VALUES ('$users_nom_complet', '$users_nom', '$users_prenom','$users_sex','$users
 
 }
 $conn->close();
-include("result.php");
+
+
+
+
+
+$_SESSION["users_id"]=    $users_id;
+$_SESSION["id_epreuve"]=  $id_epreuve;
+$_SESSION["club_id"]=     $club_id;
+
+$_SESSION["club_nom"]=             $club_nom;
+$_SESSION["club_region"]=          $club_region;
+$_SESSION["club_departement"]=     $club_departement;
+
+$_SESSION["users_nom_complet"]=    $users_nom_complet;
+$_SESSION["users_nom"]=            $users_nom;
+$_SESSION["users_prenom"]=         $users_prenom;
+$_SESSION["users_sex"]=            $users_sex;
+$_SESSION["users_naissance"]=      $users_naissance;
+$_SESSION["users_nationality"]=    $users_nationality;
+
+
+$_SESSION["nom_epreuve"]=          $nom_epreuve;
+$_SESSION["filtre_nom_epreuve"]=   $filtre_nom_epreuve;
+$_SESSION["sex_epreuve"]=          $sex_epreuve;
+$_SESSION["club_id"]=              $club_id;
+$_SESSION["id_epreuve"]=           $id_epreuve; 

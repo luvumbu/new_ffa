@@ -211,6 +211,9 @@ for (var i = 3; i < totaluser - 1; i++) {
 
 
 var club = new Information("club.php"); // création de la classe 
+//var club = new Information("http://bokonzi.com/new_ffa/club.php"); // création de la classe 
+
+
 
 // Premier partie envoie
 club.add("club_nom", tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
@@ -237,27 +240,64 @@ club.add("users_prenom", users_prenom);
 club.add("users_sex", user_sex);
 club.add("users_naissance", tr[i].children[16].innerText);
 club.add("users_nationality", users_nationality);
-
-
-
 // fin troisiéme condition 
-
-
-console.log(club.info()); // demande l'information dans le tableau
+// debut condition result 
+// console.log(tr[3].children[2].innerText) // perf sans filtre
+// console.log(result_perf); // perf avec filtre
+// fin condition result
+// !!!!  console.log(club.info()); // demande l'information dans le tableau
 club.push(); // envoie l'information au code pkp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("debut");
+var result = new Information("result.php"); // création de la classe 
+//var result = new Information("http://bokonzi.com/new_ffa/result.php"); // création de la classe 
+
+// Premier partie envoie
+result.add("result_nom", "test"); // ajout de l'information pour lenvoi 
+
+
+
+
+console.log(result.info()); // demande l'information dans le tableau
+result.push(); // envoie l'information au code pkp
+
+console.log("Fin");
+
+
+
+
+
+
 }
 
 
 
 //console.log(user_sex); // sex de lutilisateur
 // console.log(tr[2].innerText); // epreuve complet
+// console.log(epreuve_filtre); // nom de lepreuve filtre
+// console.log(tr[3].children[2].innerText) // perf sans filtre
 // console.log(result_perf); // perf avec filtre
 // console.log(reccord); // information si reccord
 // console.log(users_nationality); // nationalite user
 // console.log(nomcomplet); // nom complet user 
 // console.log(users_nom); // nom user 
 // console.log(users_prenom);// prenom user
-// console.log(tr[3].children[2].innerText) // perf sans filtre
+
 // console.log(tr[i].children[6].innerText);// nom et prenom complet 
 // console.log(tr[i].children[8].innerText); Nom du club 
 // console.log(tr[i].children[10].innerText); Nom departement 
@@ -267,7 +307,7 @@ club.push(); // envoie l'information au code pkp
 // console.log(tr[i].children[18].innerText); // jour perf 
 // console.log(tr[i].children[20].innerText); // jour ville perf 
 // console.log(epreuvecomplet);
-// console.log(epreuve_filtre); // nom de lepreuve filtre
+
 // fin boucle nom comple 
 
 //Preparation avant d el'envoie ok 	 
