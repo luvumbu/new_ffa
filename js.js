@@ -246,7 +246,7 @@ club.add("users_nationality", users_nationality);
 // console.log(result_perf); // perf avec filtre
 // fin condition result
 // !!!!  console.log(club.info()); // demande l'information dans le tableau
-club.push(); // envoie l'information au code pkp
+// club.push(); // envoie l'information au code pkp
 
 
 
