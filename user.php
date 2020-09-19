@@ -10,7 +10,7 @@ $users_nationality =        $_POST["users_nationality"];
 
 
 
- 
+$users_naissance2 =  $users_naissance;
  
 
 $search  = array("&", "'", "à", "À", "á", "Á", "â", "Â", "ã", "Ã", "ä", "Ä", "å", "Å", "æ", "Æ", "è", "È", "é", "É", "ê", "Ê", "ë", "Ë", "ì", "Ì", "í", "Í", "î", "Î", "ï", "Ï", "ò", "Ò", "ó", "Ó", "ô", "Ô", "õ", "Õ", "ö", "Ö", "ø", "Ø", "ù", "Ù", "ú", "Ú", "û", "Û", "ü", "Ü", "ñ", "Ñ", "ý", "Ý");
@@ -58,20 +58,13 @@ if ($result->num_rows > 0) {
 VALUES ('$users_nom_complet', '$users_nom', '$users_prenom','$users_sex','$users_naissance','$users_naissance2','$users_nationality')";
 
   if ($conn->query($sql) === TRUE) {
-
-
-
     echo "New record created successfully";
-
     // donne le id le l'utilisateur entrée 
-
-
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-
     $sql = 'SELECT * FROM users WHERE `users_nom` LIKE "' . $users_nom . '%"  AND `users_naissance`="' . $users_naissance . '%"';
 
     $result = $conn->query($sql);
