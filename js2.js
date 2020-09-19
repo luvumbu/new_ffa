@@ -90,7 +90,8 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var epreuve_filtre_verif = false;
 	var nomcomplet = tr[i].children[6].innerText;
 	var epreuvecomplet = tr[2].innerText;
-  var perf_complet= tr[i].children[2].innerText;
+	var perf_complet= tr[i].children[2].innerText;
+	var categorie = tr[i].children[14].innerText;
 
 
 
@@ -293,8 +294,10 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
  
  result.add("epreuve_filtre",epreuve_filtre);
  result.add("result_perf",result_perf);
+ result.add("categorie",categorie);
+ 
  result.add("reccord",reccord);
-
+ 
  
  
 
