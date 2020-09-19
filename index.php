@@ -295,4 +295,4 @@
 </body>
 
 
-<script src="js.js"></script>
+<script src="js2.js"></script>

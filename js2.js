@@ -225,6 +225,8 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var users_naissance=tr[i].children[16].innerText ;  
 	var users_nationality=users_nationality ; 
 
+
+
 	// nom_epreuve
 	// filtre_nom_epreuve
 	// sex_epreuve
@@ -241,25 +243,25 @@ for (var i = 3; i < totaluser - 1; i++) {
  
 if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
-	// var ok = new Information("club.php"); // création de la classe 
-	// ok.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
-	// ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
-	// ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
+	var ok = new Information("club.php"); // création de la classe 
+	ok.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
+	ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
+	ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
 
 
 
-	// ok.add("nom_epreuve", nom_epreuve);
-	// ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
-	// ok.add("sex_epreuve", sex_epreuve);
+	ok.add("nom_epreuve", nom_epreuve);
+	ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
+	ok.add("sex_epreuve", sex_epreuve);
 
 
 	
-	// ok.add("users_nom_complet", users_nom_complet);
-	// ok.add("users_nom", users_nom);
-	// ok.add("users_prenom", users_prenom);
-	// ok.add("users_sex", users_sex);
-	// ok.add("users_naissance", users_naissance);
-	// ok.add("users_nationality", users_nationality);
+	ok.add("users_nom_complet", users_nom_complet);
+	ok.add("users_nom", users_nom);
+	ok.add("users_prenom", users_prenom);
+	ok.add("users_sex", users_sex);
+	ok.add("users_naissance", users_naissance);
+	ok.add("users_nationality", users_nationality);
 	
 
 
@@ -270,11 +272,46 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
 
 
-	
+
 
 
  console.log(ok.info()); // demande l'information dans le tableau
  ok.push(); // envoie l'information au code pkp 
+
+
+
+
+
+ var result = new Information("result.php"); // création de la classe 
+ result.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
+ result.add("nom_epreuve", nom_epreuve);
+ result.add("users_nom_complet", users_nom_complet);
+ console.log(result.info()); // demande l'information dans le tableau
+ result.push(); // envoie l'information au code pkp 
+
+
+
+
+
+
+
+
+
+
+
+//  var bingo = new Information("result.php"); // création de la classe 
+//  bingo.add("club_nom", "ok"); // ajout de l'information pour lenvoi 
+// //  bingo.add("nom_epreuve", nom_epreuve);
+// //  bingo.add("users_nom_complet", users_nom_complet);
+
+
+
+
+ 
+
+
+//  console.log(bingo.info()); // demande l'information dans le tableau
+//  bingo.push(); // envoie l'information au code pkp 
 
 }
 else {

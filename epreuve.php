@@ -1,15 +1,19 @@
 <?php 
-// $epreuvecomplet =$_POST["epreuvecomplet"];
-// $epreuve_filtre =$_POST["epreuve_filtre"];
-// $sex_epreuve =$_POST["sex_epreuve"];
-// echo  $_SESSION["club_id"];
-// echo "?" ; 
+ 
+ 
 
 
  
 $nom_epreuve= $_POST["nom_epreuve"];
 $filtre_nom_epreuve= $_POST["filtre_nom_epreuve"];
 $sex_epreuve= $_POST["sex_epreuve"];
+
+echo $nom_epreuve ; 
+echo $filtre_nom_epreuve ; 
+echo $sex_epreuve ; 
+// $nom_epreuve= $_POST["nom_epreuve"];
+// $filtre_nom_epreuve= $_POST["filtre_nom_epreuve"];
+// $sex_epreuve= $_POST["sex_epreuve"];
  
 
 // Create connection

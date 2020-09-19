@@ -1,29 +1,21 @@
 <?php 
 session_start();
 header("Access-Control-Allow-Origin: *");
- 
+$REMOTE_ADDR= $_SERVER['REMOTE_ADDR']; 
 $servername = "localhost";
 $username = "root";
 $password = $username;
 $dbname = "all_ffa";
 
+ 
 
 
-// $servername = "localhost";
-// $username = "u481158665_all_ffa3";
-// $password = "v3p9r3e@59A";
-// $dbname = "u481158665_all_ffa3";
+
+
 
 $club_nom= $_POST["club_nom"];
 $club_region= $_POST["club_region"];
 $club_departement= $_POST["club_departement"];
-
-
-
-
-
-
-
 $club_id="";
 
 $search  = array("&","'","à","À","á","Á","â","Â","ã","Ã","ä","Ä","å","Å","æ","Æ","è","È","é","É","ê","Ê","ë","Ë","ì","Ì","í","Í","î","Î","ï","Ï","ò","Ò","ó","Ó","ô","Ô","õ","Õ","ö","Ö","ø","Ø","ù","Ù","ú","Ú","û","Û","ü","Ü","ñ","Ñ","ý","Ý");
@@ -96,9 +88,6 @@ if ($result->num_rows > 0) {
 }
 // fin de linsertio, des donne dans la bdd  #1 
 }
-$conn->close();
+ 
 include("epreuve.php");
-
-
-
 ?>

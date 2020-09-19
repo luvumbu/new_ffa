@@ -66,21 +66,6 @@ VALUES ('$users_nom_complet', '$users_nom', '$users_prenom','$users_sex','$users
     // donne le id le l'utilisateur entrée 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
     if ($conn->connect_error) {
@@ -130,38 +115,7 @@ VALUES ('$users_nom_complet', '$users_nom', '$users_prenom','$users_sex','$users
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
   }
-
-
-
   // fin de lajout 
-
-
-
 }
 $conn->close();
-
-
-
-
-
-$_SESSION["users_id"]=    $users_id;
-$_SESSION["id_epreuve"]=  $id_epreuve;
-$_SESSION["club_id"]=     $club_id;
-
-$_SESSION["club_nom"]=             $club_nom;
-$_SESSION["club_region"]=          $club_region;
-$_SESSION["club_departement"]=     $club_departement;
-
-$_SESSION["users_nom_complet"]=    $users_nom_complet;
-$_SESSION["users_nom"]=            $users_nom;
-$_SESSION["users_prenom"]=         $users_prenom;
-$_SESSION["users_sex"]=            $users_sex;
-$_SESSION["users_naissance"]=      $users_naissance;
-$_SESSION["users_nationality"]=    $users_nationality;
-
-
-$_SESSION["nom_epreuve"]=          $nom_epreuve;
-$_SESSION["filtre_nom_epreuve"]=   $filtre_nom_epreuve;
-$_SESSION["sex_epreuve"]=          $sex_epreuve;
-$_SESSION["club_id"]=              $club_id;
-$_SESSION["id_epreuve"]=           $id_epreuve; 
+?>
