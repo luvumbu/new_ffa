@@ -1,6 +1,9 @@
 <?php
 session_start();
+
+
 header("Access-Control-Allow-Origin: *");
+
 $servername = "localhost";
 $username = "root";
 $password = $username;
@@ -14,7 +17,14 @@ $club_nom = str_replace($search, $replace, $club_nom);
 $nom_epreuve = str_replace($search, $replace, $nom_epreuve);
 $users_nom_complet = str_replace($search, $replace, $users_nom_complet);
 
+$epreuvecomplet = $_POST["epreuvecomplet"];
+$epreuve_filtre = $_POST["epreuve_filtre"];
+$result_perf= $_POST["result_perf"]; 
+$perf_complet = $_POST["perf_complet"];
+$reccord= $_POST["reccord"]; 
 
+
+echo "ALLO".$epreuvecomplet;
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -99,6 +109,8 @@ $conn->close();
 // $users_datte_add =            $row["users_datte_add"];
 
 
+ 
+
 
 $result_id_user=$users_id;
 $result_id_club = $club_id;
@@ -110,8 +122,11 @@ $result_naissance_nom=$users_naissance;
 $result_naissance_filtre = $users_naissance2;
 $result_epreuve_nom= $nom_epreuve;
 $result_filtre_epreuve_nom= $filtre_nom_epreuve;
-$result_perf ;
-$result_perf_2;
+
+// $result_perf
+// $reccord
+ 
+$result_perf_2=$epreuve_filtre;
 $result_perf_3 ; 
 $result_sex =$sex_epreuve;
 $result_perf_commentaire;
@@ -141,8 +156,8 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO result (result_id_user,result_id_club, result_id_epreuve,result_users_nom_complet,result_users_nom,result_users_prenom,result_naissance_nom,result_naissance_filtre,result_epreuve_nom,result_filtre_epreuve_nom,result_perf,result_perf_2,result_perf_3,result_sex,result_perf_commentaire,result_club_nom,result_club_region,result_club_departement,result_categoti,result_personal_reccord,result_date_perf)
-VALUES ('$result_id_user','$result_id_club','$result_id_epreuve','$result_users_nom_complet','$result_users_nom','$result_users_prenom','$result_naissance_nom','$result_naissance_filtre','$result_epreuve_nom','$result_filtre_epreuve_nom','$result_perf','$result_perf_2','$result_perf_3','$result_sex','$result_perf_commentaire','$result_club_nom','$result_club_region','$result_club_departement','$result_categoti','$result_personal_reccord','$result_date_perf')";
+$sql = "INSERT INTO result (result_id_user,result_id_club,result_users_nom,result_users_prenom,result_naissance_nom,result_naissance_filtre,result_epreuve_nom,result_filtre_epreuve_nom,result_id_epreuve,result_users_nom_complet,result_perf,result_perf_2,result_sex,result_club_nom,result_club_region,result_club_departement,result_categoti,result_personal_reccord)
+VALUES ('$result_id_user','$result_id_club','$result_users_nom','$result_users_prenom','$result_naissance_nom','$result_naissance_filtre','$result_epreuve_nom','$result_filtre_epreuve_nom','$result_id_epreuve','$result_users_nom_complet','$perf_complet','$result_perf','$result_sex','$result_club_nom','$result_club_region','$result_club_departement','$result_categoti','$result_personal_reccord')";
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
@@ -151,3 +166,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
+
+
+
+?>
