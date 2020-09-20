@@ -46,8 +46,7 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var total_s = tr[i].children[2].innerText; // taille de la perf 
 	var epreuve_nom = tr[2].innerText;
 	var res = total_s.replace("''", "."); // remplacement "" par . 
-	var reccord = "";
- 
+	var reccord = ""; 
 	var result_perf = "";
 	var result_perf2 = "";
 	var result_perf3 = "";
@@ -67,8 +66,6 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var epreuvecomplet = tr[2].innerText;
 	var perf_complet= tr[i].children[2].innerText;
 	var categorie = tr[i].children[14].innerText;
-
-
 
 	var jour=tr[i].children[18].innerText[0]+tr[i].children[18].innerText[1];
 	var mois=tr[i].children[18].innerText[3]+tr[i].children[18].innerText[4];
@@ -179,15 +176,6 @@ if(placement[ex]=="-"){
 	information_placement="INTERIEUR";
 }
  }
-
-
- 
-
-
-
-
-
-
 	//
 	for (var f = 0; f < epreuve_nom.length; f++) {
 		if (epreuve_nom[f] == "|") {
@@ -199,7 +187,6 @@ if(placement[ex]=="-"){
 			}
 		}
 	}
-
 	for (var g = 0; g < epreuvecomplet.length; g++) {
 		if (epreuvecomplet[g] == "|") {
 			epreuve_filtre_verif = true;
@@ -208,7 +195,6 @@ if(placement[ex]=="-"){
 			epreuve_filtre = epreuve_filtre + epreuvecomplet[g];
 		}
 	}
-
 
 	var club_nom = 					tr[i].children[8].innerText; // ok  
 	var club_region = 			tr[i].children[10].innerText;// ok 
@@ -228,49 +214,7 @@ if(placement[ex]=="-"){
 if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
 	var ok = new Information("club.php"); // création de la classe 
-	ok.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
-	ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
-	ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
-
-	ok.add("nom_epreuve", nom_epreuve);
-	ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
-	ok.add("sex_epreuve", sex_epreuve);
-	
-	ok.add("users_nom_complet", users_nom_complet);
-	ok.add("users_nom", users_nom);
-	ok.add("users_prenom", users_prenom);
-	ok.add("users_sex", users_sex);
-	ok.add("users_naissance", users_naissance);
-	ok.add("users_nationality", users_nationality);
-
- console.log(ok.info()); // demande l'information dans le tableau
- ok.push(); // envoie l'information au code pkp 
-
- var result = new Information("result.php"); // création de la classe 
- result.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
- result.add("nom_epreuve", nom_epreuve);
- result.add("users_nom_complet", users_nom_complet);
-
- result.add("epreuvecomplet",epreuvecomplet);
- result.add("perf_complet",perf_complet);
-
- result.add("epreuve_filtre",epreuve_filtre);
- result.add("result_perf",result_perf);
- result.add("categorie",categorie);
- result.add("vend_epreuve",vend_epreuve); 
- result.add("reccord",reccord);
- result.add("information_placement",information_placement);
- result.add("result_date_perf",result_date_perf);
-
-
-
-
- 
-
- 
-
- console.log(result.info()); // demande l'information dans le tableau
- result.push(); // envoie l'information au code pkp  
+	var result = new Information("result.php"); // création de la classe 
  
 // console.log(tr[3].children[2].innerText) // perf sans filtre
 // console.log(result_perf); // perf avec filtre
@@ -278,6 +222,58 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
 }
 else {
+var ok = new Information("http://bokonzi.com/new_ffa/club.php"); // création de la classe 
+var result = new Information("http://bokonzi.com/new_ffa/result.php"); // création de la classe 
 //console.log(location.hostname);
 }
+
+
+
+ok.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
+ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
+ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
+
+ok.add("nom_epreuve", nom_epreuve);
+ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
+ok.add("sex_epreuve", sex_epreuve);
+
+ok.add("users_nom_complet", users_nom_complet);
+ok.add("users_nom", users_nom);
+ok.add("users_prenom", users_prenom);
+ok.add("users_sex", users_sex);
+ok.add("users_naissance", users_naissance);
+ok.add("users_nationality", users_nationality);
+
+console.log(ok.info()); // demande l'information dans le tableau
+ok.push(); // envoie l'information au code pkp 
+
+
+result.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
+result.add("nom_epreuve", nom_epreuve);
+result.add("users_nom_complet", users_nom_complet);
+
+result.add("epreuvecomplet",epreuvecomplet);
+result.add("perf_complet",perf_complet);
+
+result.add("epreuve_filtre",epreuve_filtre);
+result.add("result_perf",result_perf);
+result.add("categorie",categorie);
+result.add("vend_epreuve",vend_epreuve); 
+result.add("reccord",reccord);
+result.add("information_placement",information_placement);
+result.add("result_date_perf",result_date_perf);
+
+
+
+
+
+
+
+
+console.log(result.info()); // demande l'information dans le tableau
+result.push(); // envoie l'information au code pkp  
+
+
+
+
 }
