@@ -68,6 +68,23 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var perf_complet= tr[i].children[2].innerText;
 	var categorie = tr[i].children[14].innerText;
 
+
+
+	var jour=tr[i].children[18].innerText[0]+tr[i].children[18].innerText[1];
+	var mois=tr[i].children[18].innerText[3]+tr[i].children[18].innerText[4];
+	var anne=tr[i].children[18].innerText[6]+tr[i].children[18].innerText[7];
+ 
+if(anne>100){
+	anne=19+anne;
+}
+else {
+	anne=20+anne;
+}
+
+ 
+
+	var result_date_perf= 	anne+"-"+mois+"-"+jour ;
+
 	// boucle Nom comple
 
 	for (var j = 0; j < nomcomplet.length; j++) {
@@ -243,6 +260,12 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
  result.add("vend_epreuve",vend_epreuve); 
  result.add("reccord",reccord);
  result.add("information_placement",information_placement);
+ result.add("result_date_perf",result_date_perf);
+
+
+
+
+ 
 
  
 
