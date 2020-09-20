@@ -161,14 +161,37 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO result (result_id_user,result_id_club,result_users_nom,result_users_prenom,result_naissance_nom,result_naissance_filtre,result_epreuve_nom,result_filtre_epreuve_nom,result_id_epreuve,result_users_nom_complet,result_perf,result_perf_2,result_sex,result_club_nom,result_club_region,result_club_departement,result_personal_reccord,result_categoti,result_perf_commentaire,result_perf_3,result_date_perf)
-VALUES ('$result_id_user','$result_id_club','$result_users_nom','$result_users_prenom','$result_naissance_nom','$result_naissance_filtre','$result_epreuve_nom','$result_filtre_epreuve_nom','$result_id_epreuve','$result_users_nom_complet','$perf_complet','$result_perf','$result_sex','$result_club_nom','$result_club_region','$result_club_departement','$result_personal_reccord','$result_categoti','$result_perf_commentaire','$result_perf_3','$result_date_perf')";
 
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
+
+
+
+$sql = 'SELECT * FROM `result` WHERE `result_users_nom_complet`="'.$result_users_nom_complet.'" AND `result_epreuve_nom`="'.$result_epreuve_nom.'" AND `result_date_perf`="'.$result_date_perf.'" AND `result_perf_2`="'.$result_perf.'"';
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+  }
 } else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+  $sql = "INSERT INTO result (result_id_user,result_id_club,result_users_nom,result_users_prenom,result_naissance_nom,result_naissance_filtre,result_epreuve_nom,result_filtre_epreuve_nom,result_id_epreuve,result_users_nom_complet,result_perf,result_perf_2,result_sex,result_club_nom,result_club_region,result_club_departement,result_personal_reccord,result_categoti,result_perf_commentaire,result_perf_3,result_date_perf)
+  VALUES ('$result_id_user','$result_id_club','$result_users_nom','$result_users_prenom','$result_naissance_nom','$result_naissance_filtre','$result_epreuve_nom','$result_filtre_epreuve_nom','$result_id_epreuve','$result_users_nom_complet','$perf_complet','$result_perf','$result_sex','$result_club_nom','$result_club_region','$result_club_departement','$result_personal_reccord','$result_categoti','$result_perf_commentaire','$result_perf_3','$result_date_perf')";
+  
+  if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+ 
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+  
 }
+
+
+
+
+
+
 
 $conn->close();
 
