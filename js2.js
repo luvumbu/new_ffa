@@ -63,6 +63,7 @@ var totaluser = nomEpreuve.length; // nombre total de user
 // totaluser = test;
 
 for (var i = 3; i < totaluser - 1; i++) {
+	var vend_epreuve = "";
 	var nombre_space = 0;
 	var nombre_space_quantite = 0;
 	var users_nationality = "";
@@ -74,11 +75,13 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var epreuve_nom = tr[2].innerText;
 	var res = total_s.replace("''", "."); // remplacement "" par . 
 	var reccord = "";
+ 
 	var result_perf = "";
 	var result_perf2 = "";
 	var result_perf3 = "";
 	var epreuve_filtre = "";
 	var user_sex = "";
+	var vend_epreuve_verif = "";
 	var epreuve_nom_verif = false;
 	var reccord_verif = false;
 	var result_perf_verif = false;
@@ -157,6 +160,7 @@ for (var i = 3; i < totaluser - 1; i++) {
 	//console.log(tr[3].children[2].innerText.length+"!?");
 
 	// /!\ epreuve 400mheais possible et sprint
+	 
 	for (var t = 0; t < totalx - 1; t++) {
 		if (res[t] == "R") {
 			reccord = "RP";
@@ -183,9 +187,24 @@ for (var i = 3; i < totaluser - 1; i++) {
 
 
 
-	console.log("--__--__-__-_-_-_-");
+	console.log("--__--__-__-_-_-_-"+res);
+//
+
+for (var ff = 0; ff < res.length; ff++) {
+ 
+	if(res[ff]=="+" || res[ff]=="-"){
+		vend_epreuve_verif = true;
+	}
+	if(vend_epreuve_verif==true && res[ff]!=")"){
+		vend_epreuve =vend_epreuve +res[ff] ;
+	}
+}
 
 
+
+
+
+	//
 	for (var f = 0; f < epreuve_nom.length; f++) {
 		if (epreuve_nom[f] == "|") {
 			epreuve_nom_verif = true;
@@ -295,6 +314,9 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
  result.add("epreuve_filtre",epreuve_filtre);
  result.add("result_perf",result_perf);
  result.add("categorie",categorie);
+ result.add("vend_epreuve",vend_epreuve);
+
+  
  
  result.add("reccord",reccord);
  
@@ -322,3 +344,4 @@ else {
 }
  
 
+alert(vend_epreuve);
