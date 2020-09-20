@@ -22,42 +22,13 @@ class Information {
 	}
 }
 var ok = new Information("php.php"); // création de la classe 
-
-
 var nomEpreuve = document.getElementsByTagName("tr");
 nomEpreuve[2].innerText // affiche nom de lepreuve 
-
 var tr = document.getElementsByTagName("tr");
-
-//tr.length; // affiche quante des sportives sur la page 
-// tr[3].children[2].innerText; // affiche la perf
-
-// tr[3].children[4].innerText; // affiche le ?????
-
-// tr[3].children[6].innerText; // affiche nom et prenom 
-
-// tr[3].children[8].innerText; // affiche nom du club     // club_nom// 
-
-// tr[3].children[10].innerText; // affiche nom du département // club_region //
-
-// tr[3].children[12].innerText; // affiche numero du departement // club_departement//
-
-// tr[3].children[14].innerText; // affiche categorie
-
-// tr[3].children[16].innerText; // affiche anne de naissance en deux letres
-
-// tr[3].children[18].innerText; // affiche jour de la perf
-
-// tr[3].children[20].innerText; // affiche ville de la performence 
-
-
-
 var club_nom = tr[3].children[8].innerText; // club_nom// 
 var club_region = tr[3].children[10].innerText; // club_region //
 var club_departement = tr[3].children[12].innerText; // club_departement//
-
 var totaluser = nomEpreuve.length; // nombre total de user
-
 // partie test on
 // test = 50;
 // totaluser = test;
@@ -70,6 +41,7 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var users_nom = "";
 	var users_prenom = "";
 	var premier_lettre = 0;
+	var nom_epreuve= tr[2].innerText;
 	var totalx = tr[i].children[2].innerText.length; //analyse la perf
 	var total_s = tr[i].children[2].innerText; // taille de la perf 
 	var epreuve_nom = tr[2].innerText;
@@ -95,8 +67,6 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var epreuvecomplet = tr[2].innerText;
 	var perf_complet= tr[i].children[2].innerText;
 	var categorie = tr[i].children[14].innerText;
-
-
 
 	// boucle Nom comple
 
@@ -131,8 +101,6 @@ for (var i = 3; i < totaluser - 1; i++) {
 			}
 		}
 
-
-
 	} else { // luser est etranger
 		for (var x = 0; x < nomcomplet.length; x++) {
 			//console.log(nomcomplet[x]);
@@ -155,10 +123,7 @@ for (var i = 3; i < totaluser - 1; i++) {
 			}
 		}
 	}
-
-
 	//console.log(tr[3].children[2].innerText.length+"!?");
-
 	// /!\ epreuve 400mheais possible et sprint
 	 
 	for (var t = 0; t < totalx - 1; t++) {
@@ -171,34 +136,36 @@ for (var i = 3; i < totaluser - 1; i++) {
 
 		if (reccord_verif == false) {
 			result_perf = result_perf + res[t];
-		} else {
-
-		}
-
-
+		} 
 	}
-
-
 	// /!\ epreuve 400mheais possible et sprint
 	// for(var u = 0 ; u< ; u++){
 
 	// }
 
-
-
-
 	console.log("--__--__-__-_-_-_-"+res);
-//
 
-for (var ff = 0; ff < res.length; ff++) {
- 
+for (var ff = 0; ff < res.length; ff++) { 
 	if(res[ff]=="+" || res[ff]=="-"){
 		vend_epreuve_verif = true;
-	}
+	} 
 	if(vend_epreuve_verif==true && res[ff]!=")"){
 		vend_epreuve =vend_epreuve +res[ff] ;
 	}
 }
+
+var placement = tr[2].innerText;
+
+var information_placement = "EXTERIEUR";
+ for(var ex = 0 ; ex<placement.length ; ex ++){
+if(placement[ex]=="-"){
+	information_placement="INTERIEUR";
+}
+ }
+
+
+ 
+
 
 
 
@@ -216,8 +183,6 @@ for (var ff = 0; ff < res.length; ff++) {
 		}
 	}
 
-
-
 	for (var g = 0; g < epreuvecomplet.length; g++) {
 		if (epreuvecomplet[g] == "|") {
 			epreuve_filtre_verif = true;
@@ -232,7 +197,7 @@ for (var ff = 0; ff < res.length; ff++) {
 	var club_region = 			tr[i].children[10].innerText;// ok 
 	var club_departement = 	tr[i].children[12].innerText;// ok 
 
-	var  nom_epreuve= tr[2].innerText;
+
 	var  filtre_nom_epreuve= epreuve_filtre;
 	var  sex_epreuve=user_sex ; 
 
@@ -243,22 +208,6 @@ for (var ff = 0; ff < res.length; ff++) {
 	var users_naissance=tr[i].children[16].innerText ;  
 	var users_nationality=users_nationality ; 
 
-
-
-	// nom_epreuve
-	// filtre_nom_epreuve
-	// sex_epreuve
-
-	// users_nom_complet
-	// users_nom
-	// users_prenom
-	// users_sex
-	// users_naissance
-	// users_naissance2
-	// users_nationality
- 
-
- 
 if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
 	var ok = new Information("club.php"); // création de la classe 
@@ -266,13 +215,9 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 	ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
 	ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
 
-
-
 	ok.add("nom_epreuve", nom_epreuve);
 	ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
 	ok.add("sex_epreuve", sex_epreuve);
-
-
 	
 	ok.add("users_nom_complet", users_nom_complet);
 	ok.add("users_nom", users_nom);
@@ -280,68 +225,36 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 	ok.add("users_sex", users_sex);
 	ok.add("users_naissance", users_naissance);
 	ok.add("users_nationality", users_nationality);
-	
-
-
-
-
-	
- 
-
-
-
-
-
 
  console.log(ok.info()); // demande l'information dans le tableau
  ok.push(); // envoie l'information au code pkp 
-
-
-
-
 
  var result = new Information("result.php"); // création de la classe 
  result.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
  result.add("nom_epreuve", nom_epreuve);
  result.add("users_nom_complet", users_nom_complet);
 
-
- 
  result.add("epreuvecomplet",epreuvecomplet);
  result.add("perf_complet",perf_complet);
 
- 
  result.add("epreuve_filtre",epreuve_filtre);
  result.add("result_perf",result_perf);
  result.add("categorie",categorie);
- result.add("vend_epreuve",vend_epreuve);
-
-  
- 
+ result.add("vend_epreuve",vend_epreuve); 
  result.add("reccord",reccord);
- 
- 
- 
+ result.add("information_placement",information_placement);
 
  
-
 
  console.log(result.info()); // demande l'information dans le tableau
- result.push(); // envoie l'information au code pkp 
-
-
- 
+ result.push(); // envoie l'information au code pkp  
  
 // console.log(tr[3].children[2].innerText) // perf sans filtre
 // console.log(result_perf); // perf avec filtre
-// console.log(reccord); // information si reccord
- 
+// console.log(reccord); // information si reccord 
 
 }
 else {
 //console.log(location.hostname);
 }
 }
- 
-
-alert(vend_epreuve);

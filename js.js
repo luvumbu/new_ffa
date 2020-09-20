@@ -63,6 +63,7 @@ var totaluser = nomEpreuve.length; // nombre total de user
 // totaluser = test;
 
 for (var i = 3; i < totaluser - 1; i++) {
+	var vend_epreuve = "";
 	var nombre_space = 0;
 	var nombre_space_quantite = 0;
 	var users_nationality = "";
@@ -74,11 +75,13 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var epreuve_nom = tr[2].innerText;
 	var res = total_s.replace("''", "."); // remplacement "" par . 
 	var reccord = "";
+ 
 	var result_perf = "";
 	var result_perf2 = "";
 	var result_perf3 = "";
 	var epreuve_filtre = "";
 	var user_sex = "";
+	var vend_epreuve_verif = "";
 	var epreuve_nom_verif = false;
 	var reccord_verif = false;
 	var result_perf_verif = false;
@@ -90,9 +93,8 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var epreuve_filtre_verif = false;
 	var nomcomplet = tr[i].children[6].innerText;
 	var epreuvecomplet = tr[2].innerText;
-
-
-
+	var perf_complet= tr[i].children[2].innerText;
+	var categorie = tr[i].children[14].innerText;
 
 
 
@@ -158,6 +160,7 @@ for (var i = 3; i < totaluser - 1; i++) {
 	//console.log(tr[3].children[2].innerText.length+"!?");
 
 	// /!\ epreuve 400mheais possible et sprint
+	 
 	for (var t = 0; t < totalx - 1; t++) {
 		if (res[t] == "R") {
 			reccord = "RP";
@@ -184,9 +187,24 @@ for (var i = 3; i < totaluser - 1; i++) {
 
 
 
-	console.log("--__--__-__-_-_-_-");
+	console.log("--__--__-__-_-_-_-"+res);
+//
+
+for (var ff = 0; ff < res.length; ff++) {
+ 
+	if(res[ff]=="+" || res[ff]=="-"){
+		vend_epreuve_verif = true;
+	}
+	if(vend_epreuve_verif==true && res[ff]!=")"){
+		vend_epreuve =vend_epreuve +res[ff] ;
+	}
+}
 
 
+
+
+
+	//
 	for (var f = 0; f < epreuve_nom.length; f++) {
 		if (epreuve_nom[f] == "|") {
 			epreuve_nom_verif = true;
@@ -225,6 +243,8 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var users_naissance=tr[i].children[16].innerText ;  
 	var users_nationality=users_nationality ; 
 
+
+
 	// nom_epreuve
 	// filtre_nom_epreuve
 	// sex_epreuve
@@ -241,25 +261,25 @@ for (var i = 3; i < totaluser - 1; i++) {
  
 if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
-	// var ok = new Information("club.php"); // création de la classe 
-	// ok.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
-	// ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
-	// ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
+	var ok = new Information("club.php"); // création de la classe 
+	ok.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
+	ok.add("club_region", club_region); // ajout de l'information pour lenvoi 
+	ok.add("club_departement", club_departement); // ajout de l'information pour lenvoi 
 
 
 
-	// ok.add("nom_epreuve", nom_epreuve);
-	// ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
-	// ok.add("sex_epreuve", sex_epreuve);
+	ok.add("nom_epreuve", nom_epreuve);
+	ok.add("filtre_nom_epreuve", filtre_nom_epreuve);
+	ok.add("sex_epreuve", sex_epreuve);
 
 
 	
-	// ok.add("users_nom_complet", users_nom_complet);
-	// ok.add("users_nom", users_nom);
-	// ok.add("users_prenom", users_prenom);
-	// ok.add("users_sex", users_sex);
-	// ok.add("users_naissance", users_naissance);
-	// ok.add("users_nationality", users_nationality);
+	ok.add("users_nom_complet", users_nom_complet);
+	ok.add("users_nom", users_nom);
+	ok.add("users_prenom", users_prenom);
+	ok.add("users_sex", users_sex);
+	ok.add("users_naissance", users_naissance);
+	ok.add("users_nationality", users_nationality);
 	
 
 
@@ -270,97 +290,58 @@ if(location.hostname=="localhost" || location.hostname=="127.0.0.1"){
 
 
 
-	
+
 
 
  console.log(ok.info()); // demande l'information dans le tableau
  ok.push(); // envoie l'information au code pkp 
 
+
+
+
+
+ var result = new Information("result.php"); // création de la classe 
+ result.add("club_nom", club_nom); // ajout de l'information pour lenvoi 
+ result.add("nom_epreuve", nom_epreuve);
+ result.add("users_nom_complet", users_nom_complet);
+
+
+ 
+ result.add("epreuvecomplet",epreuvecomplet);
+ result.add("perf_complet",perf_complet);
+
+ 
+ result.add("epreuve_filtre",epreuve_filtre);
+ result.add("result_perf",result_perf);
+ result.add("categorie",categorie);
+ result.add("vend_epreuve",vend_epreuve);
+
+  
+ 
+ result.add("reccord",reccord);
+ 
+ 
+ 
+
+ 
+
+
+ console.log(result.info()); // demande l'information dans le tableau
+ result.push(); // envoie l'information au code pkp 
+
+
+ 
+ 
+// console.log(tr[3].children[2].innerText) // perf sans filtre
+// console.log(result_perf); // perf avec filtre
+// console.log(reccord); // information si reccord
+ 
+
 }
 else {
 //console.log(location.hostname);
 }
-
-
-
-
-
 }
  
 
-
-//console.log(user_sex); // sex de lutilisateur
-// console.log(tr[2].innerText); // epreuve complet
-// console.log(epreuve_filtre); // nom de lepreuve filtre
-// console.log(tr[3].children[2].innerText) // perf sans filtre
-// console.log(result_perf); // perf avec filtre
-// console.log(reccord); // information si reccord
-// console.log(users_nationality); // nationalite user
-// console.log(nomcomplet); // nom complet user 
-// console.log(users_nom); // nom user 
-// console.log(users_prenom);// prenom user
-
-// console.log(tr[i].children[6].innerText);// nom et prenom complet 
-// console.log(tr[i].children[8].innerText); Nom du club 
-// console.log(tr[i].children[10].innerText); Nom departement 
-// console.log(tr[i].children[12].innerText);// numero departement
-// console.log(tr[i].children[14].innerText);// categorie 
-// console.log(tr[i].children[16].innerText); // naissance date
-// console.log(tr[i].children[18].innerText); // jour perf 
-// console.log(tr[i].children[20].innerText); // jour ville perf 
-// console.log(epreuvecomplet);
-
-// fin boucle nom comple 
-
-//Preparation avant d el'envoie ok 	 
-// var ok = new Information("php.php"); // création de la classe 
-// ok.add("club_nom",  tr[i].children[8].innerText); // ajout de l'information pour lenvoi 
-// ok.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
-// ok.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
-// ok.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
-// console.log(ok.info()); // demande l'information dans le tableau
-// ok.push(); // envoie l'information au code pkp
-
-// envoie de donne ok 
-
-
-
-
-
-// envoie pour le club 
-
-//Preparation avant d el'envoie ok 	 
- 
-
-
-
-
-// var epreuve = new Information("epreuve.php"); // création de la classe 
-// epreuve.add("epreuvecomplet",epreuvecomplet); // ajout de l'information pour lenvoi 
-// //epreuve.add("club_region", tr[i].children[10].innerText); // ajout d'une deuxieme information denvoi  
-// //epreuve.add("club_departement", tr[i].children[12].innerText); // ajout d'une deuxieme information denvoi  
-// //epreuve.add("users_nom_complet", nomcomplet); // ajout d'une deuxieme information denvoi  
-// //epreuve.add("users_nom_complet", tr[i].children[6].innerText); // ajout d'une deuxieme information denvoi  
-// console.log(epreuve.info()); // demande l'information dans le tableau
-// epreuve.push(); // envoie l'information au code pkp
-
-
-
-
-//console.log(user_sex); // sex de lutilisateur
-// console.log(tr[2].innerText); // epreuve complet
-// console.log(result_perf); // perf avec filtre
-// console.log(reccord); // information si reccord
-// console.log(users_nationality); // nationalite user
-// console.log(nomcomplet); // nom complet user 
-// console.log(users_nom); // nom user 
-// console.log(users_prenom);// prenom user
-// console.log(tr[3].children[2].innerText) // perf sans filtre
-// console.log(tr[i].children[6].innerText);// nom et prenom complet 
-// console.log(tr[i].children[8].innerText); Nom du club 
-// console.log(tr[i].children[10].innerText); Nom departement 
-// console.log(tr[i].children[12].innerText);// numero departement
-// console.log(tr[i].children[14].innerText);// categorie 
-// console.log(tr[i].children[16].innerText); // naissance date
-// console.log(tr[i].children[18].innerText); // jour perf 
-// console.log(tr[i].children[20].innerText); // jour ville perf 
+alert(vend_epreuve);
