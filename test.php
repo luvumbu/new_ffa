@@ -3,20 +3,10 @@ $servername = "localhost";
 $username = "root";
 $password = "root";
 $dbname = "all_ffa";
-
-
-
-
-
-
 $search  = array('A', 'B', 'C', 'D', 'E');
 $replace = array('B', 'C', 'D', 'E', 'F');
 $subject = 'A';
 echo str_replace($search, $replace, $subject);
-
-
-
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

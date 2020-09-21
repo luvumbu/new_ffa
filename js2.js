@@ -21,10 +21,27 @@ class Information {
 		console.log(this.req);
 	}
 }
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
 var ok = new Information("php.php"); // création de la classe 
 var nomEpreuve = document.getElementsByTagName("tr");
 nomEpreuve[2].innerText // affiche nom de lepreuve 
 var tr = document.getElementsByTagName("tr");
+adresse_url = "";
+adresse_url_verif=false;
 var club_nom = tr[3].children[8].innerText; // club_nom// 
 var club_region = tr[3].children[10].innerText; // club_region //
 var club_departement = tr[3].children[12].innerText; // club_departement//
@@ -32,6 +49,27 @@ var totaluser = nomEpreuve.length; // nombre total de user
 // partie test on
 // test = 50;
 // totaluser = test;
+
+
+
+for(var t = 0 ; t<window.location.href.length;t++){
+	if(t==4){
+		 
+		 if(window.location.href[t]=="s"){
+			adresse_url_verif=true;
+		 }
+		 else {
+			adresse_url =adresse_url +window.location.href[t];
+		 }
+	}
+	else {
+		adresse_url =adresse_url +window.location.href[t];
+	}
+}
+
+if(adresse_url_verif==true){
+window.location.href = adresse_url;
+}
 
 for (var i = 3; i < totaluser - 1; i++) {
 	var vend_epreuve = "";
@@ -273,7 +311,8 @@ result.add("result_date_perf",result_date_perf);
 console.log(result.info()); // demande l'information dans le tableau
 result.push(); // envoie l'information au code pkp  
 
-
-
-
 }
+
+ 
+
+

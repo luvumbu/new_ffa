@@ -4,7 +4,6 @@ header("Access-Control-Allow-Origin: *");
 
 $REMOTE_ADDR= $_SERVER['REMOTE_ADDR']; 
 
-
 if($REMOTE_ADDR=="::1"){
   $servername = "localhost";
   $username = "root";
