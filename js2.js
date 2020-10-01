@@ -46,9 +46,20 @@ var club_nom = tr[3].children[8].innerText; // club_nom//
 var club_region = tr[3].children[10].innerText; // club_region //
 var club_departement = tr[3].children[12].innerText; // club_departement//
 var totaluser = nomEpreuve.length; // nombre total de user
+
+var barSelect = document.getElementsByClassName("barSelect");
+var nombrepages= barSelect[0].length;
+
+ 
+ 
 // partie test on
 // test = 50;
 // totaluser = test;
+
+var dernierLettre = window.location.href[window.location.href.length-1];
+
+
+
 
 
 
@@ -71,6 +82,16 @@ if(adresse_url_verif==true){
 window.location.href = adresse_url;
 }
 
+
+ 
+
+
+
+
+
+
+
+
 for (var i = 3; i < totaluser - 1; i++) {
 	var vend_epreuve = "";
 	var nombre_space = 0;
@@ -83,7 +104,7 @@ for (var i = 3; i < totaluser - 1; i++) {
 	var totalx = tr[i].children[2].innerText.length; //analyse la perf
 	var total_s = tr[i].children[2].innerText; // taille de la perf 
 	var epreuve_nom = tr[2].innerText;
-	var res = total_s.replace("''", "."); // remplacement "" par . 
+	var res = total_s;
 	var reccord = ""; 
 	var result_perf = "";
 	var result_perf2 = "";
@@ -300,14 +321,6 @@ result.add("vend_epreuve",vend_epreuve);
 result.add("reccord",reccord);
 result.add("information_placement",information_placement);
 result.add("result_date_perf",result_date_perf);
-
-
-
-
-
-
-
-
 console.log(result.info()); // demande l'information dans le tableau
 result.push(); // envoie l'information au code pkp  
 

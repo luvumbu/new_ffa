@@ -23,11 +23,14 @@ else {
 $club_nom = $_POST["club_nom"];
 $nom_epreuve = $_POST["nom_epreuve"];
 $users_nom_complet = $_POST["users_nom_complet"];
+
 $search  = array("&", "'", "à", "À", "á", "Á", "â", "Â", "ã", "Ã", "ä", "Ä", "å", "Å", "æ", "Æ", "è", "È", "é", "É", "ê", "Ê", "ë", "Ë", "ì", "Ì", "í", "Í", "î", "Î", "ï", "Ï", "ò", "Ò", "ó", "Ó", "ô", "Ô", "õ", "Õ", "ö", "Ö", "ø", "Ø", "ù", "Ù", "ú", "Ú", "û", "Û", "ü", "Ü", "ñ", "Ñ", "ý", "Ý");
 $replace = array('&amp', "&#039", "&agrave", "&Agrave", "&aacute", "&Aacute", "&acirc", "&Acirc", "&atilde", "&Atilde", "&auml", "&Auml", "&aring", "&Aring", "&aelig", "&AElig", "&egrave", "&Egrave", "&eacute", "&Eacute", "&ecirc", "&Ecirc", "&euml", "&Euml", "&igrave", "&Igrave", "&iacute", "&Iacute", "&icirc", "&Icirc", "&iuml", "&Iuml", "&ograve", "&Ograve", "&oacute", "&Oacute", "&ocirc", "&Ocirc", "&otilde", "&Otilde", "&ouml", "&Ouml", "&oslash", "&Oslash", "&ugrave", "&Ugrave", "&uacute", "&Uacute", "&ucirc", "&Ucirc", "&uuml", "&Uuml", "&ntilde", "&Ntilde", "&yacute", "&Yacute");
 $club_nom = str_replace($search, $replace, $club_nom);
 $nom_epreuve = str_replace($search, $replace, $nom_epreuve);
 $users_nom_complet = str_replace($search, $replace, $users_nom_complet);
+
+
 
 $epreuvecomplet = $_POST["epreuvecomplet"];
 $epreuve_filtre = $_POST["epreuve_filtre"];
@@ -142,6 +145,29 @@ $result_filtre_epreuve_nom= $filtre_nom_epreuve;
  
 $result_perf_2=$epreuve_filtre;
 $result_perf_3 =$_POST["information_placement"]; 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $result_sex =$sex_epreuve;
 $result_perf_commentaire=$vend_epreuve;
 $result_club_nom =$club_nom;
@@ -151,6 +177,30 @@ $result_personal_reccord;
 $result_date_perf=$_POST["result_date_perf"];
 $result_date_add;
 $result_categoti = $categorie;
+
+
+
+
+
+
+$search2  = array("''");
+$search  = array("''");
+$replace = array(".");
+$result_perf_2= str_replace($search, $replace, $result_perf_2);
+$result_perf_3= str_replace($search, $replace, $result_perf_3);
+$perf_complet= str_replace($search, $replace, $perf_complet);
+
+
+$result_perf = str_replace($search2, $replace, $result_perf);
+
+
+
+ 
+
+
+
+
+
 
 
 
