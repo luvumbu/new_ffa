@@ -392,7 +392,7 @@ if (numero_page_final == nombrepages) {
 	setTimeout(function () {
 	 	window.location.href = last_url2+numero_page_final;
 
-	}, 3000);
+	}, 10000);
 }
 
 
