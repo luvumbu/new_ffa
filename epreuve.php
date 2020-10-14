@@ -16,22 +16,10 @@ echo $sex_epreuve ;
 // $nom_epreuve= $_POST["nom_epreuve"];
 // $filtre_nom_epreuve= $_POST["filtre_nom_epreuve"];
 // $sex_epreuve= $_POST["sex_epreuve"];
- 
-
-
-
-
-
-
 $search  = array("&","'","à","À","á","Á","â","Â","ã","Ã","ä","Ä","å","Å","æ","Æ","è","È","é","É","ê","Ê","ë","Ë","ì","Ì","í","Í","î","Î","ï","Ï","ò","Ò","ó","Ó","ô","Ô","õ","Õ","ö","Ö","ø","Ø","ù","Ù","ú","Ú","û","Û","ü","Ü","ñ","Ñ","ý","Ý");
 $replace = array('&amp',"&#039","&agrave","&Agrave","&aacute","&Aacute","&acirc","&Acirc","&atilde","&Atilde","&auml","&Auml","&aring","&Aring","&aelig","&AElig","&egrave","&Egrave","&eacute","&Eacute","&ecirc","&Ecirc","&euml","&Euml","&igrave","&Igrave","&iacute","&Iacute","&icirc","&Icirc","&iuml","&Iuml","&ograve","&Ograve","&oacute","&Oacute","&ocirc","&Ocirc","&otilde","&Otilde","&ouml","&Ouml","&oslash","&Oslash","&ugrave","&Ugrave","&uacute","&Uacute","&ucirc","&Ucirc","&uuml","&Uuml","&ntilde","&Ntilde","&yacute","&Yacute");
 $club_nom= str_replace($search, $replace, $filtre_nom_epreuve);
 $club_nom= str_replace($search, $replace, $nom_epreuve);
-
-
-
-
-
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -75,11 +63,8 @@ if ($conn_insert->query($sql_insert) === TRUE) {
 		}
 	} else {
 		echo "0 results";
-	}
-
- 
+	} 
 // fin select 
-
 } else {
   echo "Error: " . $sql_insert . "<br>" . $conn_insert->error;
 }

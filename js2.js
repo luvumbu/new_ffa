@@ -80,7 +80,7 @@ for (var t = 0; t < window.location.href.length; t++) {
 }
 
 if (adresse_url_verif == true) {
-	window.location.href = adresse_url;
+	window.location.href = adresse_url+0;
 
 }
 
